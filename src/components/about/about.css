@@ -1,0 +1,127 @@
+.about {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Title */
+.about-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+.about-title h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.about-title img {
+    position: absolute;
+    width: 120px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.2;
+}
+
+/* Row container for About + Skills */
+.about-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 50px;
+    flex-wrap: wrap; /* responsive */
+}
+
+/* About container */
+.about-container {
+    flex: 1;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: justify;
+    min-width: 300px;
+}
+
+.about-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Skills */
+.about-skills {
+    flex: 1;
+    min-width: 250px;
+    text-align: left;
+}
+
+.about-skills h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.about-skill {
+    margin: 15px 0;
+}
+
+.about-skill p {
+    margin: 0 0 5px;
+    font-weight: 500;
+}
+
+.about-skill hr {
+    border: none;
+    height: 5px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #EEAECA, #94BBE9);
+}
+
+/* Achievements */
+.about-achievements {
+    text-align: center;
+}
+
+.about-achievements h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.achievement-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.about-achievement {
+    background: linear-gradient(90deg, #EEAECA, #94BBE9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    transition: transform 0.3s ease;
+}
+
+.about-achievement:hover {
+    transform: translateY(-5px);
+}
+
+.about-achievement h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #020202;
+}
+
+.about-achievement p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}

@@ -1,0 +1,67 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 120px;
+}
+
+/* Portfolio Title */
+.nav-header {
+    font-size: 32px;
+    font-weight: 900;
+    color:  #d43f8a; /* Blue like template */
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Menu Styling */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111; /* Black text */
+    text-transform: uppercase;
+}
+
+/* Each menu item */
+.nav-menu li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-menu li p:hover {
+    color: #1E3A8A; /* Blue hover */
+}
+
+/* Underline */
+.nav-menu li img {
+    display: flex;
+    margin: auto;
+    filter: invert(20%) sepia(100%) saturate(800%) hue-rotate(190deg); 
+    /* makes underline blue */
+}
+
+/* Connect button */
+.nav-connect {
+    padding: 12px 28px;
+    border-radius: 30px;
+    background:  linear-gradient(90deg, #EEAECA, #94BBE9); /* Blue button */
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-connect:hover {
+    background: #000;
+    color: #fff;
+    transform: scale(1.05);
+}
