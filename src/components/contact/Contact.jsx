@@ -1,42 +1,55 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from "emailjs-com";
 import "./Contact.css";
-import { FaYoutube, FaFacebook, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_bkckhfy", 
+        "template_k5axpbd", 
+        form.current,
+        "LVlbNC2v8k3KcyCPs" 
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Message sent successfully!");
+          e.target.reset();
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Something went wrong. Please try again.");
+        }
+      );
+  };
+
   return (
     <div className="contact-container" id="contact">
       <div className="contact-box">
-        {/* Left side */}
+        
         <div className="contact-left">
           <h2>Get in touch</h2>
-
-          <p><strong>Email:</strong><br />reactportfolio@gmail.com</p>
-          <p><strong>Phone:</strong><br />+63 911255164</p>
-          <p>
-            <strong>Address:</strong><br />
-            PH, MANILA
-          </p>
-
+          <p><strong>Email:</strong><br />loisagulto26@gmail.com</p>
+          <p><strong>Phone:</strong><br />+63 9311255164</p>
+          <p><strong>Address:</strong><br />PH, MANILA</p>
           <div className="contact-socials">
             <p>Follow us</p>
-            <div className="social-icons">
-              <FaYoutube />
-              <FaFacebook />
-              <FaInstagram />
-              <FaLinkedin />
-              <FaXTwitter />
-            </div>
           </div>
         </div>
 
-        {/* Right side (form) */}
+       
         <div className="contact-right">
-          <form>
+          <form ref={form} onSubmit={sendEmail}>
             <div className="form-row">
-              <input type="text" placeholder="Your full name" required />
-              <input type="email" placeholder="Your email address" required />
+              <input type="text" name="name" placeholder="Your full name" required />
+              <input type="email" name="email" placeholder="Your email address" required />
             </div>
-            <textarea placeholder="Write something...." rows="6" required></textarea>
+            <textarea name="message" placeholder="Write something...." rows="6" required></textarea>
             <button type="submit">Send Message</button>
           </form>
         </div>
@@ -46,4 +59,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

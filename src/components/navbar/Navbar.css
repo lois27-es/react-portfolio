@@ -1,21 +1,36 @@
+/* 🌸 NAVBAR STYLING */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 120px;
+    margin: 25px 120px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(238, 174, 202, 0.2);
+    transition: all 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Portfolio Title */
+/* ✨ Brand / Header */
 .nav-header {
     font-size: 32px;
     font-weight: 900;
-    color:  #d43f8a; /* Blue like template */
+    background: linear-gradient(90deg, #EEAECA, #94BBE9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     letter-spacing: 2px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: transform 0.3s ease;
 }
 
-/* Menu Styling */
+.nav-header:hover {
+    transform: scale(1.05);
+}
+
+/* 🌈 Navigation Menu */
 .nav-menu {
     display: flex;
     align-items: center;
@@ -23,45 +38,74 @@
     gap: 40px;
     font-size: 16px;
     font-weight: 600;
-    color: #111; /* Black text */
+    color: #333;
     text-transform: uppercase;
+    transition: color 0.3s ease;
 }
 
-/* Each menu item */
 .nav-menu li {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    gap: 4px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
-.nav-menu li p:hover {
-    color: #1E3A8A; /* Blue hover */
+/* Hover underline + color */
+.nav-menu li p {
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-/* Underline */
+.nav-menu li p::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #EEAECA, #94BBE9);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-menu li:hover p {
+    color: #d43f8a;
+}
+
+.nav-menu li:hover p::after {
+    width: 100%;
+}
+
+/* Small icons under each nav item (optional) */
 .nav-menu li img {
     display: flex;
     margin: auto;
-    filter: invert(20%) sepia(100%) saturate(800%) hue-rotate(190deg); 
-    /* makes underline blue */
+    width: 18px;
+    height: 18px;
+    filter: invert(57%) sepia(45%) saturate(500%) hue-rotate(290deg);
 }
 
-/* Connect button */
+
 .nav-connect {
     padding: 12px 28px;
     border-radius: 30px;
-    background:  linear-gradient(90deg, #EEAECA, #94BBE9); /* Blue button */
+    background: linear-gradient(90deg, #94BBE9, #EEAECA);
     color: #fff;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(238, 174, 202, 0.3);
 }
 
 .nav-connect:hover {
-    background: #000;
-    color: #fff;
-    transform: scale(1.05);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(148, 187, 233, 0.4);
+    opacity: 0.9;
+}
+.anchor-link{
+    text-decoration: none;
+    color: #333;
 }
