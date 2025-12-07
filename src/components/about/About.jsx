@@ -1,41 +1,40 @@
 import React, { useState, useEffect } from "react";
 import "./about.css";
 import theme_pattern from "../../assets/theme_pattern.svg";
-import meme_cat from "../../assets/cat.png"; 
+import meme_cat from "../../assets/cat.png";
+
+// ✅ import your Particles component
+import Particles from "../Particles/Particles";
 
 const About = () => {
   const [stars, setStars] = useState([]);
   const [memes, setMemes] = useState([]);
 
-  
   const randomPosition = () => ({
     top: `${Math.random() * 80 + 10}%`,
     left: `${Math.random() * 90 + 5}%`,
   });
 
-
   useEffect(() => {
     const addStar = () => {
       const newStar = { id: Date.now(), ...randomPosition() };
       setStars((prev) => [...prev, newStar]);
-      
+
       setTimeout(() => {
         setStars((prev) => prev.filter((s) => s.id !== newStar.id));
       }, 15000);
     };
 
-    addStar(); 
-    const interval = setInterval(addStar, 10000); 
+    addStar();
+    const interval = setInterval(addStar, 10000);
     return () => clearInterval(interval);
   }, []);
 
-  // 🌈 When a star is clicked, show a meme cat at random position
   const handleStarClick = (id) => {
     const meme = { id: Date.now(), ...randomPosition() };
     setMemes((prev) => [...prev, meme]);
     setStars((prev) => prev.filter((s) => s.id !== id));
 
-    // Remove meme after 5 seconds
     setTimeout(() => {
       setMemes((prev) => prev.filter((m) => m.id !== meme.id));
     }, 5000);
@@ -43,6 +42,20 @@ const About = () => {
 
   return (
     <div id="about" className="about">
+
+      {/* ✅ Particles background */}
+      <div className="about-particles">
+        <Particles
+          particleCount={160}
+          particleSpread={10}
+          speed={0.3}
+          particleBaseSize={80}
+          sizeRandomness={1}
+          alphaParticles={true}
+          disableRotation={false}
+        />
+      </div>
+
       <div className="about-title">
         <h1>About Me</h1>
         <img src={theme_pattern} alt="theme pattern" />
@@ -72,7 +85,7 @@ const About = () => {
         </div>
       </div>
 
-      
+      {/* ⭐ Floating Stars */}
       {stars.map((star) => (
         <div
           key={star.id}
@@ -91,7 +104,7 @@ const About = () => {
         </div>
       ))}
 
-   
+      {/* 🐱 Meme Cats */}
       {memes.map((meme) => (
         <img
           key={meme.id}

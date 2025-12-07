@@ -1,111 +1,207 @@
-/* 🌸 NAVBAR STYLING */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 25px 120px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(238, 174, 202, 0.2);
-    transition: all 0.3s ease-in-out;
-    font-family: 'Poppins', sans-serif;
+.navbar-wrapper {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 900px;
+  z-index: 100;
 }
 
-/* ✨ Brand / Header */
-.nav-header {
-    font-size: 32px;
-    font-weight: 900;
-    background: linear-gradient(90deg, #EEAECA, #94BBE9);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 2px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: transform 0.3s ease;
+/* CardNav container */
+.card-nav {
+  height: 60px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  position: relative;
 }
 
-.nav-header:hover {
-    transform: scale(1.05);
+/* Top bar */
+.card-nav-top {
+  position: absolute;
+  inset: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 2;
 }
 
-/* 🌈 Navigation Menu */
+/* Hamburger */
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger-line {
+  width: 28px;
+  height: 2px;
+  background: white;
+  transition: all 0.25s ease;
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* Logo */
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo {
+  height: 28px;
+}
+
+/* Connect Button */
+.nav-connect-btn a {
+  background: rgba(255,255,255,0.15);
+  padding: 8px 18px;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-connect-btn a:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Animated Card Area */
+.card-nav-content {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 15px;
+  display: flex;
+  gap: 12px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.card-nav.open .card-nav-content {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Cards */
+.nav-card {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 16px;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-card-label {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.nav-card-links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #bbb;
+  text-decoration: none;
+}
+
+.nav-card-link:hover {
+  color: white;
+}
+
+/* Normal nav menu under glass bar */
 .nav-menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 40px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+  gap: 30px;
 }
 
-.nav-menu li {
-    display: flex;
+.nav-menu a {
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover,
+.nav-menu .active {
+  color: white;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .card-nav-content {
     flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  }
+
+  .nav-card {
+    min-height: 60px;
+  }
+
+  .nav-connect-btn {
+    display: none;
+  }
+
+  .logo-container {
+    position: static;
+    transform: none;
+  }
+  .nav-menu.inside {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Hover underline + color */
-.nav-menu li p {
-    position: relative;
-    transition: color 0.3s ease;
+.nav-menu.inside li {
+  list-style: none;
 }
 
-.nav-menu li p::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(90deg, #EEAECA, #94BBE9);
-    transition: width 0.3s ease-in-out;
+.nav-menu.inside a {
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 500;
+  font-size: 14px;
+  transition: 0.25s ease;
 }
 
-.nav-menu li:hover p {
-    color: #d43f8a;
+.nav-menu.inside a:hover,
+.nav-menu.inside a.active {
+  color: white;
 }
 
-.nav-menu li:hover p::after {
-    width: 100%;
-}
-
-/* Small icons under each nav item (optional) */
-.nav-menu li img {
-    display: flex;
-    margin: auto;
-    width: 18px;
-    height: 18px;
-    filter: invert(57%) sepia(45%) saturate(500%) hue-rotate(290deg);
-}
-
-
-.nav-connect {
-    padding: 12px 28px;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #94BBE9, #EEAECA);
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(238, 174, 202, 0.3);
-}
-
-.nav-connect:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 15px rgba(148, 187, 233, 0.4);
-    opacity: 0.9;
-}
-.anchor-link{
-    text-decoration: none;
-    color: #333;
-}

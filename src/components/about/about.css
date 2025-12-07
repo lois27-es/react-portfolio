@@ -1,140 +1,177 @@
-.about { 
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 50px 20px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    color: #2a2a2a;
-    background-color: #fffafa; /* soft off-white background */
+.about {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 80px 20px;
+
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+
+  background: radial-gradient(circle at top, #8c73df, #090014);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional dark overlay */
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 0, 20, 0.5);
+  z-index: 1;
+}
+
+/* Keep content above overlay */
+.about-title,
+.about-row,
+.about-achievements,
+.floating-star-random,
+.meme-cat-pop {
+  position: relative;
+  z-index: 2;
+}
+
+/* Center content but keep full-width background */
+.about > * {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Title */
 .about-title {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
 }
 
 .about-title h1 {
-    font-size: 36px;
-    font-weight: 700;
-    margin: 0;
-    color: #2a2a2a;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
 }
 
 .about-title img {
-    position: absolute;
-    width: 120px;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0.15;
+  position: absolute;
+  width: 120px;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.15;
 }
 
-
+/* Layout */
 .about-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
 }
 
+/* About Card */
 .about-container {
-    flex: 1;
-    background: #f9d5dc; 
-    padding: 25px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    text-align: justify;
-    min-width: 300px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  text-align: justify;
+  min-width: 300px;
+  backdrop-filter: blur(10px);
 }
 
 .about-content {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #4f4f4f; 
+  font-size: 16px;
+  line-height: 1.8;
+  color: #d6d6f0;
 }
 
 /* Skills */
 .about-skills {
-    flex: 1;
-    min-width: 250px;
-    text-align: left;
-    background: #fefefe;
-    padding: 25px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  min-width: 250px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
 }
 
 .about-skills h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    color: #2a2a2a;
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .about-skill {
-    margin: 15px 0;
+  margin: 15px 0;
 }
 
 .about-skill p {
-    margin: 0 0 5px;
-    font-weight: 500;
-    color: #2a2a2a;
+  margin: 0 0 5px;
+  font-weight: 500;
+  color: #ffffff;
 }
 
 .about-skill hr {
-    border: none;
-    height: 5px;
-    border-radius: 3px;
-    background: linear-gradient(90deg, #f4a8b7, #fddde6);
+  border: none;
+  height: 5px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #7c4dff, #b388ff);
 }
 
 /* Achievements */
 .about-achievements {
-    text-align: center;
+  text-align: center;
 }
 
 .about-achievements h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    color: #2a2a2a;
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .achievement-cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .about-achievement {
-    background: linear-gradient(90deg, #f9b6c1, #fdd7de);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 280px;
-    transition: transform 0.3s ease;
-    color: #2a2a2a;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 280px;
+  transition: transform 0.3s ease;
+  color: #ffffff;
+  backdrop-filter: blur(10px);
 }
 
 .about-achievement:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .about-achievement h3 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    color: #2a2a2a;
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #ffffff;
 }
 
 .about-achievement p {
-    margin: 0;
-    color: #4f4f4f;
-    font-size: 14px;
+  margin: 0;
+  color: #d6d6f0;
+  font-size: 14px;
 }
+
+/* Floating star */
 .floating-star-random {
   position: fixed;
   font-size: 2.5rem;
@@ -154,6 +191,7 @@
   50% { opacity: 1; transform: scale(1.2); }
 }
 
+/* Meme cat */
 .meme-cat-pop {
   position: fixed;
   width: 150px;
@@ -168,4 +206,11 @@
   20% { opacity: 1; transform: scale(1.1) rotate(10deg); }
   80% { opacity: 1; transform: scale(1) rotate(0deg); }
   100% { opacity: 0; transform: scale(0.5) rotate(10deg); }
+}
+
+/* Particles background */
+.about-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
