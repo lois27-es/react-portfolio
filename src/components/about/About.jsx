@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./About.css";
+import "./about.css";
 import theme_pattern from "../../assets/theme_pattern.svg";
 import meme_cat from "../../assets/cat.png"; 
 
