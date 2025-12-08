@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
-
 import './Particles.css';
 
 const defaultColors = ['#ffffff', '#ffffff', '#ffffff'];
@@ -8,10 +7,7 @@ const defaultColors = ['#ffffff', '#ffffff', '#ffffff'];
 const hexToRgb = hex => {
   hex = hex.replace(/^#/, '');
   if (hex.length === 3) {
-    hex = hex
-      .split('')
-      .map(c => c + c)
-      .join('');
+    hex = hex.split('').map(c => c + c).join('');
   }
   const int = parseInt(hex, 16);
   const r = ((int >> 16) & 255) / 255;
@@ -45,6 +41,8 @@ const vertex = /* glsl */ `
     
     vec4 mPos = modelMatrix * vec4(pos, 1.0);
     float t = uTime;
+    
+    // Enhanced movement logic for smoother float
     mPos.x += sin(t * random.z + 6.28 * random.w) * mix(0.1, 1.5, random.x);
     mPos.y += sin(t * random.y + 6.28 * random.x) * mix(0.1, 1.5, random.w);
     mPos.z += sin(t * random.w + 6.28 * random.y) * mix(0.1, 1.5, random.z);
@@ -86,18 +84,18 @@ const fragment = /* glsl */ `
 `;
 
 const Particles = ({
-  particleCount = 200,
-  particleSpread = 10,
+  particleCount = 300, // Increased count for better background feel
+  particleSpread = 15, // Wider spread for full screen
   speed = 0.1,
   particleColors,
-  moveParticlesOnHover = false,
+  moveParticlesOnHover = true, // Default to true for interactivity
   particleHoverFactor = 1,
   alphaParticles = false,
   particleBaseSize = 100,
   sizeRandomness = 1,
   cameraDistance = 20,
   disableRotation = false,
-  pixelRatio = 1,
+  pixelRatio = 1, // You can increase this to 1.5 or 2 for high-res screens
   className
 }) => {
   const containerRef = useRef(null);
@@ -108,7 +106,7 @@ const Particles = ({
     if (!container) return;
 
     const renderer = new Renderer({
-      dpr: pixelRatio,
+      dpr: Math.min(window.devicePixelRatio, 2), // Auto-detect device pixel ratio for sharper particles
       depth: false,
       alpha: true
     });
@@ -119,24 +117,27 @@ const Particles = ({
     const camera = new Camera(gl, { fov: 15 });
     camera.position.set(0, 0, cameraDistance);
 
+    // Enhanced resize logic for global window
     const resize = () => {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
       renderer.setSize(width, height);
-      camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
+      camera.perspective({ aspect: width / height });
     };
+    
+    // Initial resize and listener
     window.addEventListener('resize', resize, false);
     resize();
 
+    // Enhanced mouse move: Attach to window because container has pointer-events: none
     const handleMouseMove = e => {
-      const rect = container.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = -((e.clientY / window.innerHeight) * 2 - 1);
       mouseRef.current = { x, y };
     };
 
     if (moveParticlesOnHover) {
-      container.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mousemove', handleMouseMove);
     }
 
     const count = particleCount;
@@ -195,6 +196,7 @@ const Particles = ({
       program.uniforms.uTime.value = elapsed * 0.001;
 
       if (moveParticlesOnHover) {
+        // Smoothly interpolate mouse position if needed, or stick to direct
         particles.position.x = -mouseRef.current.x * particleHoverFactor;
         particles.position.y = -mouseRef.current.y * particleHoverFactor;
       } else {
@@ -216,10 +218,10 @@ const Particles = ({
     return () => {
       window.removeEventListener('resize', resize);
       if (moveParticlesOnHover) {
-        container.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mousemove', handleMouseMove);
       }
       cancelAnimationFrame(animationFrameId);
-      if (container.contains(gl.canvas)) {
+      if (container && container.contains(gl.canvas)) {
         container.removeChild(gl.canvas);
       }
     };
@@ -238,7 +240,7 @@ const Particles = ({
     pixelRatio
   ]);
 
-  return <div ref={containerRef} className={`particles-container ${className}`} />;
+  return <div ref={containerRef} className={`particles-container ${className || ''}`} />;
 };
 
 export default Particles;

@@ -1,39 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-
 import './services.css';
-import theme_pattern from '../../assets/theme_pattern.svg';
-import Services_Data from '../../assets/services_data';
+// UPDATE PATH: Adjust the number of "../" based on where your supabaseClient.js is located.
+// If supabaseClient.js is in the ROOT folder, use "../../../supabaseClient"
+import { supabase } from '../supabaseClient'; 
 
 const Services = () => {
+  // 1. State to hold database data
+  const [servicesData, setServicesData] = useState([]);
+
+  // 2. Fetch data from Supabase on load
+  useEffect(() => {
+    const fetchServices = async () => {
+      const { data, error } = await supabase
+        .from('services')
+        .select('*')
+        .order('id'); // Ensures they stay in order
+      
+      if (error) {
+        console.error('Error fetching services:', error);
+      } else {
+        setServicesData(data);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
   return (
     <div id="services" className="services">
-      <div className="services-title">
+      
+      {/* Header */}
+      <div className="section-title-wrapper">
         <h1>My Services</h1>
-        <img src={theme_pattern} alt="" />
+        <div className="section-underline"></div>
       </div>
 
-      {/* Flowing Menu */}
+      {/* Menu Wrap */}
       <div className="menu-wrap">
         <nav className="menu">
-          {Services_Data.map((service, idx) => (
-            <MenuItem
-              key={idx}
-              text={service.s_name}
-              desc={service.s_desc}
-              image={service.s_icon}
-            />
-          ))}
+          {/* 3. Check if data exists, then map */}
+          {servicesData.length > 0 ? (
+            servicesData.map((service, idx) => (
+              <MenuItem
+                key={service.id || idx} // Use ID from database if available
+                text={service.s_name}
+                desc={service.s_desc}
+                // Image prop removed here
+              />
+            ))
+          ) : (
+            <p style={{color: 'white', textAlign: 'center'}}>Loading Services...</p>
+          )}
         </nav>
       </div>
     </div>
   );
 };
 
-function MenuItem({ text, desc, image }) {
-  const itemRef = React.useRef(null);
-  const marqueeRef = React.useRef(null);
-  const marqueeInnerRef = React.useRef(null);
+// --- MENU ITEM COMPONENT (GSAP Animation) ---
+// Removed 'image' from props
+function MenuItem({ text, desc }) {
+  const itemRef = useRef(null);
+  const marqueeRef = useRef(null);
+  const marqueeInnerRef = useRef(null);
 
   const animationDefaults = { duration: 0.6, ease: 'expo' };
 
@@ -74,10 +104,11 @@ function MenuItem({ text, desc, image }) {
       .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0);
   };
 
+  // REMOVED IMAGE LOGIC HERE
   const repeatedMarqueeContent = Array.from({ length: 4 }).map((_, idx) => (
     <React.Fragment key={idx}>
       <span>{text}</span>
-      {image && <div className="marquee__img" style={{ backgroundImage: `url(${image})` }} />}
+      {/* Image div removed */}
     </React.Fragment>
   ));
 
@@ -89,8 +120,8 @@ function MenuItem({ text, desc, image }) {
         onMouseLeave={handleMouseLeave}
       >
         <div className="service-main-text">
-          <h2>{text}</h2>
-          <p>{desc}</p>
+          <h2 style={{color: '#fff'}}>{text}</h2>
+          <p style={{color: '#a8b2d1'}}>{desc}</p>
         </div>
       </div>
 
@@ -106,4 +137,3 @@ function MenuItem({ text, desc, image }) {
 }
 
 export default Services;
-

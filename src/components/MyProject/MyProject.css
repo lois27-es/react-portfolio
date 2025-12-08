@@ -1,6 +1,6 @@
 .myproject {
   padding: 100px 20px;
-  background: radial-gradient(circle at top, #1a1235, #090014);
+  background: radial-gradient(circle at center, #051021 0%, #000000 100%);
   text-align: center;
 }
 
@@ -8,9 +8,10 @@
   font-size: 56px;
   font-weight: 700;
   margin-bottom: 50px;
-  background: linear-gradient(90deg, #b892ff, #6a5cff);
+  background: linear-gradient(90deg, #ffffff, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 70px;
 }
 
 .swap-wrapper {

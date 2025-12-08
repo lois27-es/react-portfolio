@@ -140,7 +140,7 @@ const Navbar = ({ items = [] }) => {
 
           {/* Menu inside navbar */}
           <ul className="nav-menu inside">
-            {['home', 'about', 'services', 'portfolio', 'contact'].map(item => (
+            {['home', 'about', 'services', 'projects', 'contact'].map(item => (
               <li key={item}>
                 <AnchorLink
                   href={`#${item}`}
