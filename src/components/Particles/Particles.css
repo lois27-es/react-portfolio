@@ -1,17 +1,16 @@
 /* Particles.css */
 .particles-container {
-  position: fixed; /* Fixes position relative to the viewport */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  z-index: -1; /* Places it behind all other content */
-  pointer-events: none; /* Allows clicks to pass through to buttons/links */
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
   overflow: hidden;
-  background: transparent; /* Ensures it doesn't block background colors */
+  background: transparent;
 }
 
-/* Optional: Add a subtle fade-in for smoother loading */
 .particles-container canvas {
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
