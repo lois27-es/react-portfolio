@@ -31,7 +31,6 @@ const MyProject = () => {
             Here are some of my featured projects, ranging from web applications,
             UI/UX experiments, and interactive systems.  
             I focus on clean design, smooth user experience, and modern front-end development.
-            Click or swap through the cards to explore each project in detail.
           </p>
         </div>
 
