@@ -1,94 +1,104 @@
-  .contact-container {
-    width: 100%;
-    background: radial-gradient(circle at center, #051021 0%, #000000 100%);
-    padding: 80px 5%;
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-    min-height: 100vh;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-box {
+.contact-container {
   width: 100%;
-  max-width: 1200px; /* Wider container */
+  min-height: 100vh;
+  padding: 90px 5%;
+  font-family: 'Outfit', sans-serif;
+  color: #c5d0f7;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0A0820 0%, #040314 100%);
+}
+.contact-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#0f1b38 1px, transparent 1px),
+    linear-gradient(90deg, #0f1b38 1px, transparent 1px);
+  background-size: 55px 55px;
+  opacity: 0.08;
+  animation: gridMove 20s linear infinite;
+  z-index: 0;
+}
+.contact-container::after {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(0, 140, 255, 0.22), transparent);
+  filter: blur(95px);
+  left: -10%;
+  bottom: 5%;
+  animation: orbFloat 6s ease-in-out infinite alternate;
+  z-index: 0;
+}
+.contact-box {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 80px; /* More space between columns */
-  /* Glassmorphism Dark Blue */
-  background: rgba(5, 16, 33, 0.6);
-  backdrop-filter: blur(15px);
+  gap: 40px;
+  background: rgba(10, 20, 45, 0.55);
   padding: 60px;
   border-radius: 30px;
-  border: 1px solid rgba(0, 78, 146, 0.2);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  margin-left: 210px;
-  margin-top: 37px;
-}
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 45px -12px rgba(0, 15, 60, 0.8);
 
-/* --- LEFT SIDE --- */
+  position: relative;
+  z-index: 2;
+}
 .contact-left {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 25px;
 }
-
-/* Big Title */
 .section-title h1 {
-  font-size: clamp(3rem, 5vw, 4.5rem); /* Much Bigger */
+  font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 700;
-  color: #fff;
   margin: 0;
   line-height: 1.1;
-  background: linear-gradient(90deg, #fff, #3b60a0);
+  background: linear-gradient(90deg, #ffffff, #99bdff, #2f6bff, #ffffff);
+  background-size: 250%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: flowTitle 8s linear infinite;
 }
 
 .title-underline {
-  width: 100px;
-  height: 6px;
-  background: linear-gradient(90deg, #000428, #004e92);
-  margin-top: 15px;
-  border-radius: 3px;
+  width: 110px;
+  height: 5px;
+  margin-top: 10px;
+
+  background: linear-gradient(90deg, #004e92, #007cff);
+  border-radius: 4px;
+  box-shadow: 0 0 15px #007cff;
 }
 
-/* Contact Details */
+/* ---- CONTACT DETAILS ---- */
 .contact-details {
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 18px;
 }
 
 .contact-info-item h3 {
-  font-size: 1.5rem; /* Bigger Label */
-  color: #fff;
-  margin-bottom: 5px;
+  font-size: 1.45rem;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  color: #ffffff;
 }
 
 .contact-info-item p {
-  font-size: 1.3rem; /* Bigger Text */
-  color: #a8b2d1; /* Blue-Grey */
-  margin: 0;
-  font-weight: 400;
+  font-size: 1.15rem;
+  color: #d3dcff;
 }
 
-.contact-socials p {
-  font-size: 1.2rem;
-  color: #fff;
-  margin-bottom: 15px;
-}
-
-/* --- RIGHT SIDE (Form) --- */
+/* ---- RIGHT SIDE FORM ---- */
 .contact-right {
-  flex: 1.2; /* Form takes slightly more space */
+  flex: 1.2;
+  margin-top: 120px;
 }
 
 form {
@@ -97,68 +107,59 @@ form {
   gap: 25px;
 }
 
-.form-row {
-  width: 80%;
-}
-
-/* Inputs & Textarea */
 input, textarea {
   width: 100%;
-  padding: 22px 25px; /* Taller, clickable inputs */
-  border-radius: 12px;
-  border: 2px solid rgba(0, 78, 146, 0.3); /* Dark Blue Border */
-  background: rgba(0, 4, 40, 0.4); /* Very dark background */
-  font-size: 1.1rem; /* Bigger typing font */
-  color: #fff;
+  padding: 22px 25px;
+  border-radius: 14px;
+
+  border: 2px solid rgba(0, 124, 255, 0.25);
+  background: rgba(10, 20, 45, 0.45);
+
+  font-size: 1.1rem;
+  color: #ffffff;
   font-family: 'Outfit', sans-serif;
-  outline: none;
-  transition: all 0.3s ease;
+
+  transition: 0.3s ease;
 }
 
-input::placeholder, textarea::placeholder {
-  color: #5d6d8a;
-  font-weight: 400;
+input::placeholder,
+textarea::placeholder {
+  color: #6f7ba5;
 }
 
-/* Focus State - Deep Blue Glow */
-input:focus, textarea:focus {
-  border-color: #004e92;
-  box-shadow: 0 0 20px rgba(0, 78, 146, 0.3);
-  background: rgba(0, 4, 40, 0.8);
+input:focus,
+textarea:focus {
+  border-color: #2f6bff;
+  background: rgba(10, 20, 45, 0.7);
+  box-shadow: 0 0 20px rgba(47, 107, 255, 0.45);
 }
 
 textarea {
-  resize: vertical; /* Users can only resize up/down */
+  resize: vertical;
 }
-
-/* Submit Button */
 .contact-submit {
   align-self: flex-start;
-  padding: 20px 50px;
+  padding: 18px 50px;
   border-radius: 50px;
   border: none;
-  background: linear-gradient(90deg, #000428, #004e92);
-  color: white;
-  font-size: 1.2rem;
+
+  background: linear-gradient(90deg, #023663, #3f6083);
+  color: #ffffff;
+  font-size: 1.25rem;
   font-weight: 600;
+
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  margin-top: 10px;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 124, 255, 0.25);
 }
 
 .contact-submit:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(0, 78, 146, 0.4);
-  background: linear-gradient(90deg, #001f4d, #005bb5);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 124, 255, 0.45);
 }
 
-/* --- Responsive --- */
+
 @media (max-width: 900px) {
-  .contact-container {
-    padding: 100px 5%;
-    height: auto;
-  }
 
   .contact-box {
     flex-direction: column;
@@ -166,15 +167,27 @@ textarea {
     gap: 50px;
   }
 
-  .contact-left, .contact-right {
-    width: 100%;
-  }
-
-  .section-title h1 {
-    font-size: 3rem;
+  .contact-right {
+    margin-top: 0;
   }
 
   .contact-submit {
-    width: 100%; /* Full width button on mobile */
+    width: 100%;
   }
+}
+
+/* Keyframes reused from ABOUT section */
+@keyframes gridMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-180px); }
+}
+
+@keyframes orbFloat {
+  0% { transform: translateY(0); opacity: 0.6; }
+  100% { transform: translateY(40px); opacity: 0.9; }
+}
+
+@keyframes flowTitle {
+  0% { background-position: 0%; }
+  100% { background-position: 250%; }
 }

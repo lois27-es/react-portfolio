@@ -11,7 +11,7 @@
 /* CardNav container */
 .card-nav {
   height: 60px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(2, 1, 7, 0.65); /* updated to match your purple */
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 8px 30px rgba(0,0,0,0.5);
@@ -69,8 +69,8 @@
 
 /* Connect Button */
 .nav-connect-btn a {
-  background: rgba(255,255,255,0.15);
-  padding: 8px 18px;
+  background: linear-gradient(90deg, #0A0620, hsl(235, 21%, 23%)); /* MATCHED TONE */
+  padding: 9px 35px;
   border-radius: 20px;
   color: white;
   text-decoration: none;
@@ -137,7 +137,7 @@
   color: white;
 }
 
-/* Normal nav menu under glass bar */
+/* Normal nav menu */
 .nav-menu {
   display: flex;
   justify-content: center;
@@ -179,30 +179,30 @@
     position: static;
     transform: none;
   }
+
   .nav-menu.inside {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-.nav-menu.inside li {
-  list-style: none;
-}
+  .nav-menu.inside li {
+    list-style: none;
+  }
 
-.nav-menu.inside a {
-  text-decoration: none;
-  color: #aaa;
-  font-weight: 500;
-  font-size: 14px;
-  transition: 0.25s ease;
-}
+  .nav-menu.inside a {
+    text-decoration: none;
+    color: #aaa;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.25s ease;
+  }
 
-.nav-menu.inside a:hover,
-.nav-menu.inside a.active {
-  color: white;
-}
-
+  .nav-menu.inside a:hover,
+  .nav-menu.inside a.active {
+    color: white;
+  }
 }

@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* --- THEME EXTRACTED FROM SCREENSHOT --- */
-  --bg-core: #000000;
-  --bg-radial-center: #051021; /* The deep blue glow center */
+ 
+  --bg-core: #050315;
+  --bg-radial-center: ##0B0620; 
   
-  --glass-panel: rgba(255, 255, 255, 0.03); /* Very subtle glass for cards */
-  --glass-sidebar: rgba(2, 6, 13, 0.85); /* Darker glass for sidebar */
+  --glass-panel: rgba(255, 255, 255, 0.03);
+  --glass-sidebar: rgba(2, 6, 13, 0.85);
   
   --border: rgba(255, 255, 255, 0.08);
   
-  /* Text Colors */
+
   --text-main: #ffffff;
-  --text-muted: #8892b0; /* The grey-blue text from your bio */
-  --text-accent: #3b60a0; /* The "Hello It's Me" blue */
+  --text-muted: #8892b0;
+  --text-accent: #3b60a0;
   
-  /* Button Gradients */
-  --btn-gradient: linear-gradient(90deg, #0a2e5c 0%, #164e87 100%); /* Matches "Connect with me" */
+
+  --btn-gradient: linear-gradient(90deg, #0a2e5c 0%, #164e87 100%);
   --btn-hover: linear-gradient(90deg, #0f3d7a 0%, #1e60a3 100%);
   
   --danger: #ef4444;
@@ -25,7 +25,7 @@
 
 * { box-sizing: border-box; }
 
-/* --- GLOBAL LAYOUT --- */
+
 .admin-layout {
   display: flex;
   height: 100vh;

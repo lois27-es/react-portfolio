@@ -1,52 +1,160 @@
+/* ------------------------------
+   SECTION WRAPPER
+--------------------------------*/
 .myproject {
   padding: 100px 20px;
-  background: radial-gradient(circle at center, #051021 0%, #000000 100%);
+  background: radial-gradient(circle at center, #0B0620 0%, #050315 100%);
   text-align: center;
 }
 
-.swap-title {
-  font-size: 56px;
-  font-weight: 700;
-  margin-bottom: 50px;
-  background: linear-gradient(90deg, #ffffff, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 70px;
+
+/* ------------------------------
+   SECTION TITLE
+--------------------------------*/
+.section-title-wrapper {
+  text-align: center;
+  margin-top: 100px;
+  z-index: 2;
 }
 
+.section-title-wrapper h1 {
+  font-size: 3.1rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  background: linear-gradient(90deg, #ffffff, #99bdff, #2f6bff, #ffffff);
+  background-size: 250%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: flowTitle 8s linear infinite;
+}
+
+.section-underline {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #7db2ff, #2f6bff, #7db2ff);
+  margin: 12px auto 0 auto;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+/* Title animation */
+@keyframes flowTitle {
+  0% { background-position: 0%; }
+  100% { background-position: 250%; }
+}
+
+/* ------------------------------
+   TWO-COLUMN WRAPPER
+--------------------------------*/
 .swap-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 600px;
+  gap: 60px;
+  padding: 40px 5%;
 }
 
-/* inside Card */
+/* ------------------------------
+   LEFT TEXT SIDE
+--------------------------------*/
+.project-description {
+  flex: 1;
+  color: #ffffff;
+  text-align: left;
+  max-width: 450px;
+}
+
+.project-description h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+
+  background: linear-gradient(90deg, #ffffff, #8fc9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-description p {
+  font-size: 18px;
+  opacity: 0.85;
+  line-height: 1.7;
+}
+.project-cards {
+  flex: 1;
+  max-width: 340px;   /* smaller width */
+}
+
 .swap-card {
   width: 100%;
-  height: 100%;
-  border-radius: 20px;
+  height: 420px;  /* smaller height */
+  border-radius: 18px;
   overflow: hidden;
-  background: transparent;
+}
+
+
+
+.swap-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(80, 140, 255, 0.35);
 }
 
 .swap-card img {
   width: 100%;
-  height: 60%;
-  object-fit: cover;
-}
-
-.swap-info {
-  padding: 20px;
-  color: white;
+  border-radius: 15px;
+  margin-bottom: 15px;
 }
 
 .swap-info h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 8px;
 }
 
 .swap-info p {
-  font-size: 14px;
-  opacity: 0.85;
+  font-size: 16px;
+  opacity: 0.8;
+  color: #e5e5e5;
+  line-height: 1.6;
+}
+
+/* ------------------------------
+   RESPONSIVE DESIGN
+--------------------------------*/
+@media (max-width: 1024px) {
+  .swap-wrapper {
+    gap: 40px;
+  }
+
+  .project-description h2 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 880px) {
+  .swap-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .project-description {
+    text-align: center;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-title-wrapper h1 {
+    font-size: 2.6rem;
+  }
+
+  .project-description h2 {
+    font-size: 28px;
+  }
+
+  .project-description p {
+    font-size: 16px;
+  }
 }

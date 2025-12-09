@@ -1,26 +1,19 @@
-/* footer.css */
-
 .footer {
   width: 100%;
-  /* Deep Navy Background */
-  background: radial-gradient(circle at center, #051021 0%, #000000 100%);
+  background: radial-gradient(circle at center, #0B0620 0%, #050315 100%);
   padding: 60px 5% 30px;
   font-family: 'Poppins', sans-serif;
   color: #ffffff;
   position: relative;
   overflow: hidden;
 }
-
-/* --- THE FIX: Reduced max-width to center content visually --- */
 .footer-content {
-  max-width: 1200px; /* Changed from 1700px to 1200px */
-  margin: 0 auto;    /* This keeps the container centered */
+  max-width: 1200px; 
+  margin: 0 auto;    
   display: flex;
   flex-direction: column; 
   gap: 60px;
 }
-
-/* --- TOP SECTION --- */
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -40,8 +33,6 @@
   color: #a8b2d1;
   max-width: 500px;
 }
-
-/* Email Input Container */
 .footer-top-right {
   flex: 1;
   display: flex;
@@ -74,11 +65,11 @@
 }
 
 .footer-subscribe-btn {
-  background: linear-gradient(90deg, #000428, #004e92);
+  background: linear-gradient(90deg, #023663, #3f6083);
   color: white;
   border: none;
   border-radius: 50px;
-  padding: 12px 30px;
+  padding: 11px 18px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
