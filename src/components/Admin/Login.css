@@ -16,7 +16,7 @@
 .login-card {
   width: 100%;
   max-width: 400px;
-  background: rgba(17, 25, 40, 0.75); /* Dark Transparent Blue/Grey */
+  background: #0B0620; /* Dark Transparent Blue/Grey */
   border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle Border */
   border-radius: 16px;
   padding: 50px 40px;

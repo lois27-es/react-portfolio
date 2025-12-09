@@ -2,7 +2,7 @@
 
 :root {
  
-  --bg-core: #050315;
+  --bg-core: #0B0620;
   --bg-radial-center: ##0B0620; 
   
   --glass-panel: rgba(255, 255, 255, 0.03);
@@ -20,7 +20,7 @@
   --btn-hover: linear-gradient(90deg, #0f3d7a 0%, #1e60a3 100%);
   
   --danger: #ef4444;
-  --update: #f59e0b;
+  --update: #ece1ce;
 }
 
 * { box-sizing: border-box; }
