@@ -6,7 +6,8 @@
   --bg-radial-center: #0B0620; 
   
   --glass-panel: rgba(255, 255, 255, 0.03);
-  --glass-sidebar: rgba(9, 29, 65, 0.85);
+  --glass-sidebar: rgba(20, 10, 35, 0.55);
+
   
   --border: rgba(255, 255, 255, 0.08);
   
@@ -25,17 +26,16 @@
 
 * { box-sizing: border-box; }
 
-
 .admin-layout {
   display: flex;
   height: 100vh;
   width: 100vw;
-  /* Exact Match: Radial Gradient from your Hero Section */
-  background: radial-gradient(circle at 50% 30%, var(--bg-radial-center) 0%, var(--bg-core) 100%);
+  background: radial-gradient(circle at center, #0B0620 0%, #050315 100%);
   color: var(--text-main);
   font-family: 'Outfit', sans-serif;
   overflow: hidden;
 }
+
 
 /* --- SIDEBAR --- */
 .sidebar {
