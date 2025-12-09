@@ -1,30 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
- 
   --bg-core: #0B0620;
-  --bg-radial-center: #0B0620; 
-  
+  --bg-radial-center: #0B0620;
   --glass-panel: rgba(255, 255, 255, 0.03);
   --glass-sidebar: rgba(20, 10, 35, 0.55);
-
-  
   --border: rgba(255, 255, 255, 0.08);
-  
-
   --text-main: #ffffff;
   --text-muted: #8892b0;
   --text-accent: #3b60a0;
-  
-
   --btn-gradient: linear-gradient(90deg, #0a2e5c 0%, #164e87 100%);
   --btn-hover: linear-gradient(90deg, #0f3d7a 0%, #1e60a3 100%);
-  
   --danger: #ef4444;
   --update: #ece1ce;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
 
 .admin-layout {
   display: flex;
@@ -32,12 +26,9 @@
   width: 100vw;
   background: radial-gradient(circle at center, #0B0620 0%, #050315 100%);
   color: var(--text-main);
-  font-family: 'Outfit', sans-serif;
   overflow: hidden;
 }
 
-
-/* --- SIDEBAR --- */
 .sidebar {
   width: 260px;
   background: var(--glass-sidebar);
@@ -62,7 +53,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 800;
-  background: linear-gradient(to right, #ffffff, #1e3c72); /* Matches your Name Gradient */
+  background: linear-gradient(to right, #ffffff, #1e3c72);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -83,7 +74,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  border-radius: 50px; /* Pill shape hover */
+  border-radius: 50px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -123,7 +114,6 @@
   color: #fff;
 }
 
-/* --- MAIN CONTENT --- */
 .main-content {
   flex: 1;
   padding: 40px 60px;
@@ -139,12 +129,12 @@
   letter-spacing: 1px;
 }
 
-/* --- CARDS (Glassmorphism) --- */
-.form-card, .grid-card {
+.form-card,
+.grid-card {
   background: var(--glass-panel);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
-  border-radius: 20px; /* Matches the rounded vibe */
+  border-radius: 20px;
   padding: 35px;
   margin-bottom: 40px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
@@ -153,7 +143,7 @@
 .form-card h3 {
   margin: 0 0 25px 0;
   font-size: 1.1rem;
-  color: var(--text-accent); /* "Hello It's Me" color */
+  color: var(--text-accent);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 700;
@@ -162,8 +152,9 @@
   gap: 10px;
 }
 
-/* --- INPUTS --- */
-.form-group { margin-bottom: 25px; }
+.form-group {
+  margin-bottom: 25px;
+}
 
 .form-group label {
   display: block;
@@ -173,40 +164,47 @@
   font-weight: 500;
 }
 
-input[type="text"], input[type="number"], textarea, input[type="file"] {
+input[type="text"],
+input[type="number"],
+textarea,
+input[type="file"] {
   width: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Darker well for inputs */
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border);
   color: #fff;
   padding: 16px 20px;
   border-radius: 12px;
   outline: none;
-  font-family: inherit;
   font-size: 1rem;
   transition: all 0.3s ease;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   border-color: #3b60a0;
   box-shadow: 0 0 15px rgba(59, 96, 160, 0.2);
   background: rgba(0, 0, 0, 0.6);
 }
 
-textarea { resize: vertical; min-height: 120px; }
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
 
 input[type="file"] {
   padding: 12px;
   cursor: pointer;
 }
 
-/* --- BUTTONS (Matches "Connect with me") --- */
-.btn-submit, .btn-update, .btn-add {
+.btn-submit,
+.btn-update,
+.btn-add {
   width: 100%;
   padding: 16px;
   background: var(--btn-gradient);
   color: #fff;
   border: none;
-  border-radius: 50px; /* Pill Shape */
+  border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
@@ -215,14 +213,15 @@ input[type="file"] {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-.btn-submit:hover, .btn-update:hover {
+.btn-submit:hover,
+.btn-update:hover {
   transform: translateY(-3px);
   background: var(--btn-hover);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .btn-update {
-  background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%); /* Amber gradient for updates */
+  background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%);
 }
 
 .btn-cancel {
@@ -243,7 +242,6 @@ input[type="file"] {
   color: #fff;
 }
 
-/* --- GRID LAYOUT --- */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -261,7 +259,7 @@ input[type="file"] {
 
 .grid-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(59, 96, 160, 0.5); /* Blue glow on hover */
+  border-color: rgba(59, 96, 160, 0.5);
 }
 
 .card-image {
@@ -277,9 +275,9 @@ input[type="file"] {
   object-fit: cover;
 }
 
-.card-content { 
-  padding: 25px; 
-  flex: 1; 
+.card-content {
+  padding: 25px;
+  flex: 1;
 }
 
 .card-content h3 {
@@ -317,27 +315,28 @@ input[type="file"] {
   gap: 8px;
 }
 
-.btn-edit { 
-  background: transparent; 
-  border: 1px solid #3b60a0; 
-  color: #3b60a0; 
-}
-.btn-edit:hover { 
-  background: #3b60a0; 
-  color: #fff; 
+.btn-edit {
+  background: transparent;
+  border: 1px solid #3b60a0;
+  color: #3b60a0;
 }
 
-.btn-delete { 
+.btn-edit:hover {
+  background: #3b60a0;
+  color: #fff;
+}
+
+.btn-delete {
   background: transparent;
   border: 1px solid var(--danger);
-  color: var(--danger); 
-}
-.btn-delete:hover { 
-  background: var(--danger); 
-  color: #fff; 
+  color: var(--danger);
 }
 
-/* LOADING */
+.btn-delete:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
 .loading-screen {
   height: 100vh;
   display: flex;
