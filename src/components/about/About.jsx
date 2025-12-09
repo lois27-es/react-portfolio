@@ -15,7 +15,6 @@ const About = () => {
   });
 
   useEffect(() => {
-    // Fetch Skills
     const fetchSkills = async () => {
       const { data } = await supabase
         .from("skills")
@@ -23,8 +22,6 @@ const About = () => {
         .order("id");
       if (data) setSkills(data);
     };
-
-    // Fetch Bio
     const fetchBio = async () => {
       const { data } = await supabase.from("profile").select("*").single();
       if (data) setBio(data);
@@ -33,7 +30,6 @@ const About = () => {
     fetchSkills();
     fetchBio();
 
-    // Star Logic
     const addStar = () => {
       const newStar = {
         id: Date.now(),
@@ -54,8 +50,6 @@ const About = () => {
 
   return (
     <div id="about" className="about">
-
-      {/* ✅ Correct particle wrapper (matches your CSS) */}
       <div className="about-particles-bg">
         <Particles
           particleColors={["#ffffff", "#00c6ff"]}
@@ -76,8 +70,6 @@ const About = () => {
         </div>
 
         <div className="about-row">
-
-          {/* LEFT: Bio */}
           <div className="about-card bio-card">
             <div className="card-content">
               <p>{bio.bio_paragraph_1}</p>
@@ -85,8 +77,6 @@ const About = () => {
               <p>{bio.bio_paragraph_2}</p>
             </div>
           </div>
-
-          {/* RIGHT: Skills */}
           <div className="about-card skills-card">
             <h2>My Skills</h2>
 

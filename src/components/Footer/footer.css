@@ -80,8 +80,6 @@
 .footer-subscribe-btn:hover {
   transform: scale(1.05);
 }
-
-/* --- BOTTOM SECTION --- */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -115,18 +113,16 @@
   color: #004e92;
   text-decoration: underline;
 }
-
-/* --- RESPONSIVE FIX --- */
 @media (max-width: 850px) {
   .footer-top {
     flex-direction: column;
-    align-items: center; /* Center align on mobile */
+    align-items: center; 
     text-align: center;
   }
   
   .footer-top-right {
     width: 100%;
-    justify-content: center; /* Center input on mobile */
+    justify-content: center; 
   }
 
   .footer-bottom {

@@ -23,8 +23,6 @@ const MyProject = () => {
       </div>
 
       <div className="swap-wrapper">
-
-        {/* LEFT SIDE TEXT */}
         <div className="project-description">
           <h2>Creative Work & Development</h2>
           <p>
@@ -33,8 +31,6 @@ const MyProject = () => {
             I focus on clean design, smooth user experience, and modern front-end development.
           </p>
         </div>
-
-        {/* RIGHT SIDE CARDS */}
         <div className="project-cards">
           {projects.length > 0 ? (
             <CardSwap>

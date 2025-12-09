@@ -1,8 +1,3 @@
-/* ---------------------------------------------------
-   ABOUT SECTION — MATCHED TO HERO THEME
------------------------------------------------------ */
-
-/* Main Wrapper */
 .about {
   width: 100%;
   min-height: 100vh;
@@ -18,8 +13,6 @@
   font-family: 'Outfit', sans-serif;
   overflow: hidden;
 }
-
-/* Grid background — softened to match hero atmosphere */
 .about::before {
   content: "";
   position: absolute;
@@ -54,18 +47,15 @@
   0% { transform: translateY(0); opacity: 0.6; }
   100% { transform: translateY(40px); opacity: 0.9; }
 }
-/* ---------------------------------------------------
-   PARTICLES — ABOUT SECTION
------------------------------------------------------ */
 .about-particles-bg {
   position: absolute;
   top: 0; 
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* under content, above background */
+  z-index: 1;
   pointer-events: none;
-  opacity: 0.45; /* slightly softer than hero */
+  opacity: 0.45; 
 }
 
 

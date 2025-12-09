@@ -1,16 +1,8 @@
-/* ------------------------------
-   SECTION WRAPPER
---------------------------------*/
 .myproject {
   padding: 100px 20px;
   background: radial-gradient(circle at center, #0B0620 0%, #050315 100%);
   text-align: center;
 }
-
-
-/* ------------------------------
-   SECTION TITLE
---------------------------------*/
 .section-title-wrapper {
   text-align: center;
   margin-top: 100px;
@@ -29,7 +21,6 @@
   -webkit-text-fill-color: transparent;
   animation: flowTitle 8s linear infinite;
 }
-
 .section-underline {
   width: 120px;
   height: 4px;
@@ -38,16 +29,10 @@
   border-radius: 10px;
   opacity: 0.9;
 }
-
-/* Title animation */
 @keyframes flowTitle {
   0% { background-position: 0%; }
   100% { background-position: 250%; }
 }
-
-/* ------------------------------
-   TWO-COLUMN WRAPPER
---------------------------------*/
 .swap-wrapper {
   display: flex;
   justify-content: center;
@@ -56,10 +41,6 @@
   gap: 60px;
   padding: 40px 5%;
 }
-
-/* ------------------------------
-   LEFT TEXT SIDE
---------------------------------*/
 .project-description {
   flex: 1;
   color: #ffffff;
@@ -119,10 +100,6 @@
   color: #e5e5e5;
   line-height: 1.6;
 }
-
-/* ------------------------------
-   RESPONSIVE DESIGN
---------------------------------*/
 @media (max-width: 1024px) {
   .swap-wrapper {
     gap: 40px;

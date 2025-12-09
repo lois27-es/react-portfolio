@@ -308,8 +308,6 @@ const AdminDashboard = () => {
             </form>
           </div>
         )}
-
-        {/* --- GRID DISPLAY --- */}
         {activeTab !== 'bio' && (
           <div className="grid-container">
             {items.map(item => (

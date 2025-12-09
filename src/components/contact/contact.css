@@ -76,8 +76,6 @@
   border-radius: 4px;
   box-shadow: 0 0 15px #007cff;
 }
-
-/* ---- CONTACT DETAILS ---- */
 .contact-details {
   display: flex;
   flex-direction: column;
@@ -94,8 +92,6 @@
   font-size: 1.15rem;
   color: #d3dcff;
 }
-
-/* ---- RIGHT SIDE FORM ---- */
 .contact-right {
   flex: 1.2;
   margin-top: 120px;
@@ -175,8 +171,6 @@ textarea {
     width: 100%;
   }
 }
-
-/* Keyframes reused from ABOUT section */
 @keyframes gridMove {
   from { transform: translateY(0); }
   to { transform: translateY(-180px); }

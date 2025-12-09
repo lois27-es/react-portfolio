@@ -1,11 +1,8 @@
 body {
   margin: 0;
-  /* Apply the dark purple background here globally */
-  background-color: #110826; /* Adjust this hex code to match your screenshot exactly */
+  background-color: #110826; 
   color: white;
 }
-
-/* Ensure sections are transparent so we can see particles through them */
 section, .hero, .about, .services {
   background: transparent; 
 }

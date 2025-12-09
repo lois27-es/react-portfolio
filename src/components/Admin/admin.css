@@ -1,30 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
- 
   --bg-core: #0B0620;
-  --bg-radial-center: #0B0620; 
-  
+  --bg-radial-center: #0B0620;
   --glass-panel: rgba(255, 255, 255, 0.03);
   --glass-sidebar: rgba(20, 10, 35, 0.55);
-
-  
   --border: rgba(255, 255, 255, 0.08);
-  
-
   --text-main: #ffffff;
   --text-muted: #8892b0;
   --text-accent: #3b60a0;
-  
-
   --btn-gradient: linear-gradient(90deg, #0a2e5c 0%, #164e87 100%);
   --btn-hover: linear-gradient(90deg, #0f3d7a 0%, #1e60a3 100%);
-  
   --danger: #ef4444;
   --update: #ece1ce;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 .admin-layout {
   display: flex;
@@ -34,20 +27,37 @@
   color: var(--text-main);
   font-family: 'Outfit', sans-serif;
   overflow: hidden;
+  position: relative;
 }
 
+.admin-layout::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(70, 50, 150, 0.25), transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(30, 120, 200, 0.25), transparent 60%);
+  filter: blur(110px);
+  animation: subtleMove 14s ease-in-out infinite alternate;
+  z-index: 0;
+}
 
-/* --- SIDEBAR --- */
+@keyframes subtleMove {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.2) translate(-20px, -40px); }
+}
+
 .sidebar {
   width: 260px;
-  background: var(--glass-sidebar);
-  backdrop-filter: blur(15px);
-  border-right: 1px solid var(--border);
+  background: rgba(15, 10, 30, 0.55);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
   display: flex;
   flex-direction: column;
   padding: 30px 20px;
   flex-shrink: 0;
-  z-index: 10;
+  position: relative;
+  z-index: 5;
+  box-shadow: 8px 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .sidebar-header {
@@ -57,12 +67,11 @@
 
 .sidebar-header h2 {
   font-size: 1.2rem;
-  color: var(--text-main);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 800;
-  background: linear-gradient(to right, #ffffff, #1e3c72); /* Matches your Name Gradient */
+  background: linear-gradient(to right, #ffffff, #1e3c72);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -83,7 +92,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  border-radius: 50px; /* Pill shape hover */
+  border-radius: 50px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -91,15 +100,17 @@
 }
 
 .sidebar-nav button:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.07);
   color: #fff;
-  transform: translateX(5px);
+  transform: translateX(8px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-nav button.active {
   background: var(--btn-gradient);
   color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 18px rgba(59, 96, 160, 0.6);
+  transform: translateX(10px);
 }
 
 .logout-btn {
@@ -123,37 +134,36 @@
   color: #fff;
 }
 
-/* --- MAIN CONTENT --- */
 .main-content {
   flex: 1;
   padding: 40px 60px;
   overflow-y: auto;
   position: relative;
+  z-index: 2;
 }
 
 .page-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #fff;
   margin: 0 0 40px 0;
   letter-spacing: 1px;
 }
 
-/* --- CARDS (Glassmorphism) --- */
 .form-card, .grid-card {
-  background: var(--glass-panel);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 20px; /* Matches the rounded vibe */
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 35px;
   margin-bottom: 40px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
+  transition: 0.3s ease;
 }
 
 .form-card h3 {
   margin: 0 0 25px 0;
   font-size: 1.1rem;
-  color: var(--text-accent); /* "Hello It's Me" color */
+  color: var(--text-accent);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 700;
@@ -162,8 +172,22 @@
   gap: 10px;
 }
 
-/* --- INPUTS --- */
-.form-group { margin-bottom: 25px; }
+.grid-card {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.grid-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(59, 96, 160, 0.6);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.6);
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
 
 .form-group label {
   display: block;
@@ -175,7 +199,7 @@
 
 input[type="text"], input[type="number"], textarea, input[type="file"] {
   width: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Darker well for inputs */
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border);
   color: #fff;
   padding: 16px 20px;
@@ -188,25 +212,27 @@ input[type="text"], input[type="number"], textarea, input[type="file"] {
 
 input:focus, textarea:focus {
   border-color: #3b60a0;
-  box-shadow: 0 0 15px rgba(59, 96, 160, 0.2);
-  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 18px rgba(59, 96, 160, 0.45);
+  background: rgba(10, 10, 25, 0.7);
 }
 
-textarea { resize: vertical; min-height: 120px; }
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
 
 input[type="file"] {
   padding: 12px;
   cursor: pointer;
 }
 
-/* --- BUTTONS (Matches "Connect with me") --- */
 .btn-submit, .btn-update, .btn-add {
   width: 100%;
   padding: 16px;
   background: var(--btn-gradient);
   color: #fff;
   border: none;
-  border-radius: 50px; /* Pill Shape */
+  border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
@@ -222,7 +248,7 @@ input[type="file"] {
 }
 
 .btn-update {
-  background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%); /* Amber gradient for updates */
+  background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%);
 }
 
 .btn-cancel {
@@ -243,25 +269,10 @@ input[type="file"] {
   color: #fff;
 }
 
-/* --- GRID LAYOUT --- */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
-}
-
-.grid-card {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.grid-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(59, 96, 160, 0.5); /* Blue glow on hover */
 }
 
 .card-image {
@@ -277,9 +288,9 @@ input[type="file"] {
   object-fit: cover;
 }
 
-.card-content { 
-  padding: 25px; 
-  flex: 1; 
+.card-content {
+  padding: 25px;
+  flex: 1;
 }
 
 .card-content h3 {
@@ -317,27 +328,28 @@ input[type="file"] {
   gap: 8px;
 }
 
-.btn-edit { 
-  background: transparent; 
-  border: 1px solid #3b60a0; 
-  color: #3b60a0; 
-}
-.btn-edit:hover { 
-  background: #3b60a0; 
-  color: #fff; 
+.btn-edit {
+  background: transparent;
+  border: 1px solid #3b60a0;
+  color: #3b60a0;
 }
 
-.btn-delete { 
+.btn-edit:hover {
+  background: #3b60a0;
+  color: #fff;
+}
+
+.btn-delete {
   background: transparent;
   border: 1px solid var(--danger);
-  color: var(--danger); 
-}
-.btn-delete:hover { 
-  background: var(--danger); 
-  color: #fff; 
+  color: var(--danger);
 }
 
-/* LOADING */
+.btn-delete:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
 .loading-screen {
   height: 100vh;
   display: flex;
