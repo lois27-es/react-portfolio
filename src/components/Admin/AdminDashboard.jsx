@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient'; 
 import './admin.css';
-import { FaLayerGroup, FaCode, FaUser, FaSignOutAlt, FaPlus, FaPen, FaTrash, FaImage, FaEdit, FaTimes } from 'react-icons/fa';
+import { 
+  FaLayerGroup, FaCode, FaUser, FaSignOutAlt, 
+  FaPlus, FaPen, FaTrash, FaImage, FaEdit, FaTimes 
+} from 'react-icons/fa';
+import Particles from "../Particles/Particles";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -50,7 +54,9 @@ const AdminDashboard = () => {
     setFormData({});
     setFile(null);
     setEditingId(null);
-    if(document.getElementById('fileInput')) document.getElementById('fileInput').value = ""; 
+    if (document.getElementById('fileInput')) {
+      document.getElementById('fileInput').value = "";
+    }
   };
 
   const uploadImage = async (file) => {
@@ -69,21 +75,21 @@ const AdminDashboard = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (activeTab === 'projects') {
-        setFormData({ 
-            w_name: item.w_name, 
-            w_desc: item.w_desc, 
-            existing_image: item.w_img 
-        });
+      setFormData({ 
+        w_name: item.w_name, 
+        w_desc: item.w_desc, 
+        existing_image: item.w_img 
+      });
     } else if (activeTab === 'services') {
-        setFormData({ 
-            s_name: item.s_name, 
-            s_desc: item.s_desc 
-        });
+      setFormData({ 
+        s_name: item.s_name, 
+        s_desc: item.s_desc 
+      });
     } else if (activeTab === 'skills') {
-        setFormData({ 
-            name: item.name, 
-            percentage: item.percentage 
-        });
+      setFormData({ 
+        name: item.name, 
+        percentage: item.percentage 
+      });
     }
   };
 
@@ -106,23 +112,23 @@ const AdminDashboard = () => {
     let error;
 
     if (editingId) {
-        const { error: updateError } = await supabase
-            .from(activeTab)
-            .update(itemPayload)
-            .eq('id', editingId);
-        error = updateError;
+      const { error: updateError } = await supabase
+        .from(activeTab)
+        .update(itemPayload)
+        .eq('id', editingId);
+      error = updateError;
     } else {
-        const { error: insertError } = await supabase
-            .from(activeTab)
-            .insert([itemPayload]);
-        error = insertError;
+      const { error: insertError } = await supabase
+        .from(activeTab)
+        .insert([itemPayload]);
+      error = insertError;
     }
     
     if (error) {
-        alert("Operation failed: " + error.message);
+      alert("Operation failed: " + error.message);
     } else {
-        resetForm();
-        fetchItems();
+      resetForm();
+      fetchItems();
     }
     setLoading(false);
   };
@@ -135,7 +141,7 @@ const AdminDashboard = () => {
   };
 
   const handleDelete = async (id) => {
-    if(!window.confirm("Delete this item permanently?")) return;
+    if (!window.confirm("Delete this item permanently?")) return;
     await supabase.from(activeTab).delete().eq('id', id);
     if (editingId === id) resetForm();
     fetchItems();
@@ -151,10 +157,16 @@ const AdminDashboard = () => {
   return (
     <div className="admin-layout">
 
+      {/* PARTICLES BACKGROUND */}
+      <div className="admin-particles-bg">
+        <Particles />
+      </div>
+
       <aside className="sidebar">
         <div className="sidebar-header">
           <h2>Geraldine's Panel</h2>
         </div>
+
         <nav className="sidebar-nav">
           <button className={activeTab === 'projects' ? 'active' : ''} onClick={() => setActiveTab('projects')}>
             <FaLayerGroup /> Projects
@@ -169,6 +181,7 @@ const AdminDashboard = () => {
             <FaUser /> About Me
           </button>
         </nav>
+
         <button className="logout-btn" onClick={handleLogout}>
           <FaSignOutAlt /> Logout
         </button>
@@ -180,49 +193,69 @@ const AdminDashboard = () => {
         </div>
 
         {activeTab === 'bio' ? (
-           <div className="form-card">
-             <h3><FaPen /> Edit Profile Info</h3>
-             <form onSubmit={updateBio}>
-               <div className="form-group">
-                 <label>Paragraph 1</label>
-                 <textarea 
-                    rows="4" 
-                    value={bioData.bio_paragraph_1} 
-                    onChange={e => setBioData({...bioData, bio_paragraph_1: e.target.value})} 
-                 />
-               </div>
-               <div className="form-group">
-                 <label>Paragraph 2</label>
-                 <textarea 
-                    rows="4" 
-                    value={bioData.bio_paragraph_2} 
-                    onChange={e => setBioData({...bioData, bio_paragraph_2: e.target.value})} 
-                 />
-               </div>
-               <button type="submit" className="btn-submit">Save Changes</button>
-             </form>
-           </div>
+          <div className="form-card">
+            <h3><FaPen /> Edit Profile Info</h3>
+            <form onSubmit={updateBio}>
+              <div className="form-group">
+                <label>Paragraph 1</label>
+                <textarea 
+                  rows="4"
+                  value={bioData.bio_paragraph_1}
+                  onChange={e => setBioData({ ...bioData, bio_paragraph_1: e.target.value })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Paragraph 2</label>
+                <textarea 
+                  rows="4"
+                  value={bioData.bio_paragraph_2}
+                  onChange={e => setBioData({ ...bioData, bio_paragraph_2: e.target.value })}
+                />
+              </div>
+
+              <button type="submit" className="btn-submit">Save Changes</button>
+            </form>
+          </div>
         ) : (
-          <div className="form-card" style={{border: editingId ? '1px solid #f59e0b' : '1px solid rgba(255,255,255,0.1)'}}>
+          <div className="form-card" style={{ border: editingId ? '1px solid #f59e0b' : '' }}>
             <h3>
-                {editingId ? <><FaEdit /> Edit Item</> : <><FaPlus /> Add New {activeTab.slice(0, -1)}</>}
+              {editingId ? <><FaEdit /> Edit Item</> : <><FaPlus /> Add New {activeTab.slice(0, -1)}</>}
             </h3>
-            
+
             <form onSubmit={handleSubmit}>
               
               {activeTab === 'projects' && (
                 <>
                   <div className="form-group">
                     <label>Project Name</label>
-                    <input type="text" value={formData.w_name || ''} placeholder="Title" onChange={e => setFormData({...formData, w_name: e.target.value})} required />
+                    <input 
+                      type="text" 
+                      value={formData.w_name || ''} 
+                      onChange={e => setFormData({ ...formData, w_name: e.target.value })}
+                      required 
+                    />
                   </div>
+
                   <div className="form-group">
                     <label>Description</label>
-                    <textarea rows="3" value={formData.w_desc || ''} placeholder="Details..." onChange={e => setFormData({...formData, w_desc: e.target.value})} required />
+                    <textarea 
+                      rows="3"
+                      value={formData.w_desc || ''}
+                      onChange={e => setFormData({ ...formData, w_desc: e.target.value })}
+                      required 
+                    />
                   </div>
+
                   <div className="form-group">
-                    <label>Project Image {editingId && <small>(Leave empty to keep existing)</small>}</label>
-                    <input id="fileInput" type="file" accept="image/*" onChange={e => setFile(e.target.files[0])} required={!editingId} /> 
+                    <label>Project Image {editingId && <small>(Leave empty to keep current)</small>}</label>
+                    <input 
+                      id="fileInput"
+                      type="file" 
+                      accept="image/*"
+                      onChange={e => setFile(e.target.files[0])}
+                      required={!editingId}
+                    />
                   </div>
                 </>
               )}
@@ -231,11 +264,22 @@ const AdminDashboard = () => {
                 <>
                   <div className="form-group">
                     <label>Service Name</label>
-                    <input type="text" value={formData.s_name || ''} placeholder="Service Title" onChange={e => setFormData({...formData, s_name: e.target.value})} required />
+                    <input 
+                      type="text"
+                      value={formData.s_name || ''}
+                      onChange={e => setFormData({ ...formData, s_name: e.target.value })}
+                      required 
+                    />
                   </div>
+
                   <div className="form-group">
                     <label>Description</label>
-                    <textarea rows="3" value={formData.s_desc || ''} placeholder="Details..." onChange={e => setFormData({...formData, s_desc: e.target.value})} required />
+                    <textarea 
+                      rows="3"
+                      value={formData.s_desc || ''}
+                      onChange={e => setFormData({ ...formData, s_desc: e.target.value })}
+                      required 
+                    />
                   </div>
                 </>
               )}
@@ -244,46 +288,65 @@ const AdminDashboard = () => {
                 <>
                   <div className="form-group">
                     <label>Skill Name</label>
-                    <input type="text" value={formData.name || ''} placeholder="e.g. React" onChange={e => setFormData({...formData, name: e.target.value})} required />
+                    <input 
+                      type="text"
+                      value={formData.name || ''}
+                      onChange={e => setFormData({ ...formData, name: e.target.value })}
+                      required 
+                    />
                   </div>
+
                   <div className="form-group">
-                    <label>Percentage (0-100)</label>
-                    <input type="number" value={formData.percentage || ''} placeholder="85" onChange={e => setFormData({...formData, percentage: e.target.value})} required />
+                    <label>Percentage</label>
+                    <input 
+                      type="number"
+                      value={formData.percentage || ''}
+                      onChange={e => setFormData({ ...formData, percentage: e.target.value })}
+                      required 
+                    />
                   </div>
                 </>
               )}
 
               <button 
-                type="submit" 
-                className={editingId ? "btn-update" : "btn-submit"} 
+                type="submit"
+                className={editingId ? "btn-update" : "btn-submit"}
                 disabled={loading}
               >
-                {loading ? 'Processing...' : (editingId ? 'Update Item' : 'Add Item')}
+                {loading ? "Processing..." : editingId ? "Update" : "Add"}
               </button>
 
               {editingId && (
                 <button type="button" className="btn-cancel" onClick={resetForm}>
-                    <FaTimes /> Cancel Edit
+                  <FaTimes /> Cancel
                 </button>
               )}
 
             </form>
           </div>
         )}
+
         {activeTab !== 'bio' && (
           <div className="grid-container">
             {items.map(item => (
-              <div key={item.id} className="grid-card" style={{borderColor: editingId === item.id ? '#f59e0b' : ''}}>
+              <div key={item.id} className="grid-card" style={{ borderColor: editingId === item.id ? '#f59e0b' : '' }}>
+
                 {activeTab === 'projects' && item.w_img && (
                   <div className="card-image">
-                    <img src={item.w_img} alt="Preview" />
+                    <img src={item.w_img} alt="Project" />
                   </div>
                 )}
-                
+
                 <div className="card-content">
                   <h3>{item.name || item.w_name || item.s_name}</h3>
-                  {item.percentage && <p style={{color:'#00c6ff', fontWeight:'bold'}}>{item.percentage}% Proficiency</p>}
-                  {(item.w_desc || item.s_desc) && <p>{(item.w_desc || item.s_desc).substring(0, 80)}...</p>}
+                  {item.percentage && (
+                    <p style={{ color: '#00c6ff', fontWeight: 'bold' }}>
+                      {item.percentage}% Proficiency
+                    </p>
+                  )}
+                  {(item.w_desc || item.s_desc) && (
+                    <p>{(item.w_desc || item.s_desc).substring(0, 80)}...</p>
+                  )}
                 </div>
 
                 <div className="card-actions">
@@ -294,6 +357,7 @@ const AdminDashboard = () => {
                     <FaTrash /> Delete
                   </button>
                 </div>
+
               </div>
             ))}
           </div>
