@@ -6,8 +6,9 @@ const Contact = () => {
   const form = useRef();
 
   const sendEmail = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevents the page from reloading on submit
 
+    // YOUR CREDENTIALS: service_id, template_id, form_current, public_key
     emailjs
       .sendForm(
         'service_bkckhfy', 
@@ -18,7 +19,7 @@ const Contact = () => {
       .then(
         () => {
           alert('Message sent successfully!');
-          e.target.reset(); 
+          e.target.reset(); // Clears the form fields after sending
         },
         (error) => {
           console.log('FAILED...', error.text);
@@ -31,6 +32,8 @@ const Contact = () => {
     <div id='contact' className='contact-container'>
       
       <div className="contact-box">
+        
+        {/* LEFT SIDE */}
         <div className="contact-left">
           <div className="section-title">
             <h1>Get in touch</h1>
@@ -56,19 +59,26 @@ const Contact = () => {
 
           <div className="contact-socials">
             <p>Follow us</p>
+            {/* Add your social icons here if needed */}
           </div>
         </div>
+
+        {/* RIGHT SIDE (Form) */}
         <div className="contact-right">
+          {/* Linked the ref and onSubmit handler here */}
           <form ref={form} onSubmit={sendEmail}>
             <div className="form-row">
+              {/* IMPORTANT: The 'name' attribute must match {{name}} in your EmailJS template */}
               <input type="text" name="user_name" placeholder="Your full name" required />
             </div>
             
             <div className="form-row">
+              {/* IMPORTANT: The 'name' attribute must match {{email}} in your EmailJS template */}
               <input type="email" name="user_email" placeholder="Your email address" required />
             </div>
 
             <div className="form-row">
+              {/* IMPORTANT: The 'name' attribute must match {{message}} in your EmailJS template */}
               <textarea name="message" rows="6" placeholder="Write something..." required></textarea>
             </div>
 

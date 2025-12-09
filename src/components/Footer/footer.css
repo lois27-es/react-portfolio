@@ -69,7 +69,7 @@
   color: white;
   border: none;
   border-radius: 50px;
-  padding: 11px 18px;
+  padding: 8px 18px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -80,6 +80,8 @@
 .footer-subscribe-btn:hover {
   transform: scale(1.05);
 }
+
+/* --- BOTTOM SECTION --- */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -113,16 +115,18 @@
   color: #004e92;
   text-decoration: underline;
 }
+
+/* --- RESPONSIVE FIX --- */
 @media (max-width: 850px) {
   .footer-top {
     flex-direction: column;
-    align-items: center; 
+    align-items: center; /* Center align on mobile */
     text-align: center;
   }
   
   .footer-top-right {
     width: 100%;
-    justify-content: center; 
+    justify-content: center; /* Center input on mobile */
   }
 
   .footer-bottom {

@@ -1,8 +1,10 @@
 body {
   margin: 0;
-  background-color: #110826; 
+  background-color: #110826; /* Adjust this hex code to match your screenshot exactly */
   color: white;
 }
+
+/* Ensure sections are transparent so we can see particles through them */
 section, .hero, .about, .services {
   background: transparent; 
 }

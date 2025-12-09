@@ -129,6 +129,7 @@ const Navbar = ({ items = [] }) => {
     <div className="navbar-wrapper">
       <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`}>
         <div className="card-nav-top">
+          {/* Hamburger */}
           <div
             className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
             onClick={toggleMenu}
@@ -136,6 +137,8 @@ const Navbar = ({ items = [] }) => {
             <div className="hamburger-line" />
             <div className="hamburger-line" />
           </div>
+
+          {/* Menu inside navbar */}
           <ul className="nav-menu inside">
             {['home', 'about', 'services', 'projects', 'contact'].map(item => (
               <li key={item}>
@@ -150,12 +153,16 @@ const Navbar = ({ items = [] }) => {
               </li>
             ))}
           </ul>
+
+          {/* Connect Button */}
           <div className="nav-connect-btn">
             <AnchorLink href="#contact" offset={50}>
               Connect
             </AnchorLink>
           </div>
         </div>
+
+        {/* Dropdown cards */}
         <div className="card-nav-content" aria-hidden={!isExpanded}>
           {(items || []).slice(0, 3).map((item, idx) => (
             <div key={idx} className="nav-card" ref={setCardRef(idx)}>

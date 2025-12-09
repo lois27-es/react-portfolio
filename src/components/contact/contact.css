@@ -1,3 +1,8 @@
+/* ---------------------------------------------------
+   CONTACT SECTION — MATCHED TO HERO + ABOUT THEME
+----------------------------------------------------- */
+
+/* ---- MAIN CONTAINER ---- */
 .contact-container {
   width: 100%;
   min-height: 100vh;
@@ -6,8 +11,12 @@
   color: #c5d0f7;
   position: relative;
   overflow: hidden;
+
+  /* Same deep-space gradient as ABOUT */
   background: radial-gradient(circle at center, #0A0820 0%, #040314 100%);
 }
+
+/* Grid overlay (same as ABOUT) */
 .contact-container::before {
   content: "";
   position: absolute;
@@ -20,6 +29,8 @@
   animation: gridMove 20s linear infinite;
   z-index: 0;
 }
+
+/* Floating neon orb (same color + animation as ABOUT) */
 .contact-container::after {
   content: "";
   position: absolute;
@@ -32,6 +43,8 @@
   animation: orbFloat 6s ease-in-out infinite alternate;
   z-index: 0;
 }
+
+/* ---- CONTACT BOX ---- */
 .contact-box {
   width: 100%;
   max-width: 1200px;
@@ -39,6 +52,8 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 40px;
+
+  /* Glass card (same formula as ABOUT cards) */
   background: rgba(10, 20, 45, 0.55);
   padding: 60px;
   border-radius: 30px;
@@ -49,17 +64,23 @@
   position: relative;
   z-index: 2;
 }
+
+/* ---- LEFT SIDE ---- */
 .contact-left {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
+
+/* Title */
 .section-title h1 {
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 700;
   margin: 0;
   line-height: 1.1;
+
+  /* SAME gradient animation as ABOUT title */
   background: linear-gradient(90deg, #ffffff, #99bdff, #2f6bff, #ffffff);
   background-size: 250%;
   -webkit-background-clip: text;
@@ -76,6 +97,8 @@
   border-radius: 4px;
   box-shadow: 0 0 15px #007cff;
 }
+
+/* ---- CONTACT DETAILS ---- */
 .contact-details {
   display: flex;
   flex-direction: column;
@@ -92,6 +115,8 @@
   font-size: 1.15rem;
   color: #d3dcff;
 }
+
+/* ---- RIGHT SIDE FORM ---- */
 .contact-right {
   flex: 1.2;
   margin-top: 120px;
@@ -171,6 +196,8 @@ textarea {
     width: 100%;
   }
 }
+
+/* Keyframes reused from ABOUT section */
 @keyframes gridMove {
   from { transform: translateY(0); }
   to { transform: translateY(-180px); }
