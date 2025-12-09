@@ -6,13 +6,11 @@ import Particles from "../Particles/Particles";
 
 const Hero = () => {
   const openResume = () => {
-    window.open('/resume.pdf', '_blank');
+    window.open("/resume.pdf", "_blank");
   };
 
   return (
     <div id="home" className="hero">
-
-      {/* 1. Global Particles */}
       <div className="hero-particles-bg">
         <Particles
           particleColors={["#ffffff", "#a29bfe"]}
@@ -27,40 +25,26 @@ const Hero = () => {
       </div>
 
       <div className="hero-container">
-
-        {/* Left: Image */}
         <div className="hero-left">
           <div className="img-glow-wrapper">
             <div className="img-container">
-              <img
-                src={profile_img}
-                alt="Geraldine Lois Agulto"
-                className="hero-img"
-              />
+              <img src={profile_img} alt="Geraldine Lois Agulto" className="hero-img" />
             </div>
           </div>
         </div>
 
-        {/* Right: Text */}
         <div className="hero-right">
-
-          {/* Move welcome text on top */}
           <h3 className="hero-welcome">HELLO, IT'S ME</h3>
 
-          {/* Split name into two colors */}
           <h1>
             <span className="name-white">Geraldine</span>{" "}
             <span className="name-blue">Lois Agulto</span>
           </h1>
 
-          <h2 className="hero-subtitle">
-            4th Year BSIT Student
-          </h2>
+          <h2 className="hero-subtitle">4th Year BSIT Student</h2>
 
           <p>
-            Aspiring Front-End Developer and Web Designer with four years of
-            academic experience, crafting seamless and impactful digital
-            experiences.
+            Aspiring Front-End Developer and Web Designer with four years of academic experience, crafting seamless and impactful digital experiences.
           </p>
 
           <div className="hero-action">
@@ -75,14 +59,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Down Indicator */}
-      <div className="">
-        <div className="">
-          <div className=""></div>
-        </div>
-        <span></span>
-      </div>
-
+      <div className="scroll-down"></div>
     </div>
   );
 };
