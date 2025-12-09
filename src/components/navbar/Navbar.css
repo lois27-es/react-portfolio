@@ -8,10 +8,9 @@
   z-index: 100;
 }
 
-/* CardNav container */
 .card-nav {
   height: 60px;
-  background: rgba(10, 6, 32, 0.65); /* updated to match your purple */
+  background: rgba(10, 6, 32, 0.65);
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 8px 30px rgba(0,0,0,0.5);
@@ -20,7 +19,6 @@
   position: relative;
 }
 
-/* Top bar */
 .card-nav-top {
   position: absolute;
   inset: 0;
@@ -32,7 +30,6 @@
   z-index: 2;
 }
 
-/* Hamburger */
 .hamburger-menu {
   display: flex;
   flex-direction: column;
@@ -56,7 +53,6 @@
   transform: translateY(-4px) rotate(-45deg);
 }
 
-/* Logo */
 .logo-container {
   position: absolute;
   left: 50%;
@@ -67,10 +63,9 @@
   height: 28px;
 }
 
-/* Connect Button */
 .nav-connect-btn a {
-  background: linear-gradient(90deg, #0A0620, hsl(235, 21%, 23%)); /* MATCHED TONE */
-  padding: 9px 35px;
+  background: linear-gradient(90deg, #8f8ba5, hsl(235, 39%, 23%));
+  padding: 10px 36px;
   border-radius: 20px;
   color: white;
   text-decoration: none;
@@ -82,7 +77,6 @@
   background: rgba(255,255,255,0.3);
 }
 
-/* Animated Card Area */
 .card-nav-content {
   position: absolute;
   top: 60px;
@@ -101,7 +95,6 @@
   pointer-events: auto;
 }
 
-/* Cards */
 .nav-card {
   flex: 1;
   background: rgba(255,255,255,0.05);
@@ -137,7 +130,6 @@
   color: white;
 }
 
-/* Normal nav menu */
 .nav-menu {
   display: flex;
   justify-content: center;
@@ -157,7 +149,6 @@
   color: white;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .nav-menu {
     display: none;

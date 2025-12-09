@@ -1,16 +1,9 @@
-/* ------------------------------
-   IMPORTS
------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap');
 
-/* Hide scrollbar */
 html::-webkit-scrollbar { display: none; }
 html { -ms-overflow-style: none; scrollbar-width: none; }
 body { margin: 0; padding: 0; overflow-x: hidden; }
 
-/* ------------------------------
-   HERO SECTION
------------------------------- */
 .hero {
   position: relative;
   width: 100%;
@@ -19,14 +12,9 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
-
-  /* Deep space gradient */
- background: radial-gradient(circle at center, #0B0620 0%, #050315 100%);
+  background: radial-gradient(circle at center, #0B0620 0%, #050315 100%);
 }
 
-/* ------------------------------
-   PARTICLES
------------------------------- */
 .hero-particles-bg {
   position: fixed;
   top: 0; left: 0;
@@ -35,9 +23,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   z-index: 0;
 }
 
-/* ------------------------------
-   HERO CONTAINER
------------------------------- */
 .hero-container {
   display: flex;
   align-items: center;
@@ -47,13 +32,9 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   padding: 0 5%;
   height: 100%;
   z-index: 2;
-
   animation: fadePop 1s ease-out forwards;
 }
 
-/* ------------------------------
-   LEFT — IMAGE
------------------------------- */
 .hero-left {
   flex: 1;
   display: flex;
@@ -61,7 +42,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   align-items: center;
 }
 
-/* Glow wrapper */
 .img-glow-wrapper {
   position: relative;
   width: clamp(230px, 28vw, 400px);
@@ -69,7 +49,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   animation: float 6s ease-in-out infinite;
 }
 
-/* Glow behind image */
 .img-glow-wrapper::before {
   content: '';
   position: absolute;
@@ -102,9 +81,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   transform: scale(1.38);
 }
 
-/* ------------------------------
-   RIGHT — TEXT
------------------------------- */
 .hero-right {
   flex: 1.2;
   padding-left: 2rem;
@@ -122,7 +98,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   animation: fadeInUp 1.6s ease forwards;
 }
 
-/* MAIN NAME — animated gradient */
 .hero-right h1 {
   font-size: clamp(3rem, 5vw, 5.5rem);
   font-weight: 800;
@@ -132,7 +107,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation: gradientFlow 8s infinite linear;
 }
 
@@ -155,9 +129,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   animation: fadeInUp 2.5s ease forwards;
 }
 
-/* ------------------------------
-   BUTTONS
------------------------------- */
 .hero-action {
   display: flex;
   gap: 25px;
@@ -176,7 +147,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   transition: 0.3s ease;
 }
 
-/* Blue button */
 .hero-connect {
   background: linear-gradient(90deg, #001b44, #53687a);
   color: white;
@@ -188,7 +158,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   box-shadow: 0 12px 40px rgba(0, 120, 255, 0.45);
 }
 
-/* Outline button */
 .hero-resume {
   border: 2px solid #3e5fa8;
   color: #d2dbff;
@@ -200,7 +169,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   color: white;
 }
 
-/* Ripple hover effect */
 .hero-connect::before,
 .hero-resume::before {
   content: '';
@@ -221,9 +189,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   transition: 0.6s;
 }
 
-/* ------------------------------
-   SCROLL INDICATOR
------------------------------- */
 .scroll-down {
   position: absolute;
   bottom: 40px;
@@ -232,9 +197,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   animation: fadeIn 3s ease forwards;
 }
 
-/* ------------------------------
-   ANIMATIONS
------------------------------- */
 @keyframes float {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
@@ -260,9 +222,6 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   100% { background-position: 300%; }
 }
 
-/* ------------------------------ 
-   RESPONSIVE 
------------------------------- */
 @media (max-width: 1024px) {
   .hero-container {
     flex-direction: column-reverse;

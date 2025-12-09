@@ -24,18 +24,15 @@ const MyProject = () => {
 
       <div className="swap-wrapper">
 
-        {/* LEFT SIDE TEXT */}
         <div className="project-description">
           <h2>Creative Work & Development</h2>
           <p>
             Here are some of my featured projects, ranging from web applications,
-            UI/UX experiments, and interactive systems.  
+            UI/UX experiments, and interactive systems.
             I focus on clean design, smooth user experience, and modern front-end development.
-            
           </p>
         </div>
 
-        {/* RIGHT SIDE CARDS */}
         <div className="project-cards">
           {projects.length > 0 ? (
             <CardSwap>
@@ -52,12 +49,13 @@ const MyProject = () => {
               ))}
             </CardSwap>
           ) : (
-            <p style={{color: 'white'}}>Loading Projects...</p>
+            <p style={{ color: 'white' }}>Loading Projects...</p>
           )}
         </div>
 
       </div>
     </div>
-  )
-}
+  );
+};
+
 export default MyProject;

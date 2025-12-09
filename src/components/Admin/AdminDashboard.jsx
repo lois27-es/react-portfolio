@@ -6,24 +6,15 @@ import { FaLayerGroup, FaCode, FaUser, FaSignOutAlt, FaPlus, FaPen, FaTrash, FaI
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  
-  // Tabs
   const [activeTab, setActiveTab] = useState('projects'); 
-  
   const [items, setItems] = useState([]);
   const [bioData, setBioData] = useState({ bio_paragraph_1: '', bio_paragraph_2: '' });
-  
-  // Form State
   const [formData, setFormData] = useState({});
   const [file, setFile] = useState(null); 
-  
-  // Edit State
-  const [editingId, setEditingId] = useState(null); // If not null, we are in "Edit Mode"
-  
+  const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [checkingAuth, setCheckingAuth] = useState(true);
 
-  // --- 1. AUTH CHECK ---
   useEffect(() => {
     const verifyUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -33,24 +24,21 @@ const AdminDashboard = () => {
     verifyUser();
   }, [navigate]);
 
-  // --- 2. DATA FETCHING ---
   useEffect(() => {
     if (!checkingAuth) {
       if (activeTab === 'bio') fetchBio();
       else {
         fetchItems();
-        resetForm(); // Reset form when switching tabs
+        resetForm();
       }
     }
   }, [activeTab, checkingAuth]);
 
-  // Fetch Bio
   const fetchBio = async () => {
     const { data } = await supabase.from('profile').select('*').single();
     if (data) setBioData(data);
   };
 
-  // Fetch Lists
   const fetchItems = async () => {
     setLoading(true);
     const { data } = await supabase.from(activeTab).select('*').order('id', { ascending: true });
@@ -58,7 +46,6 @@ const AdminDashboard = () => {
     setLoading(false);
   };
 
-  // --- 3. HELPER: RESET FORM ---
   const resetForm = () => {
     setFormData({});
     setFile(null);
@@ -66,7 +53,6 @@ const AdminDashboard = () => {
     if(document.getElementById('fileInput')) document.getElementById('fileInput').value = ""; 
   };
 
-  // --- 4. IMAGE UPLOAD LOGIC ---
   const uploadImage = async (file) => {
     const fileName = `${Date.now()}-${file.name}`;
     const { error } = await supabase.storage.from('images').upload(fileName, file);
@@ -78,19 +64,15 @@ const AdminDashboard = () => {
     return data.publicUrl;
   };
 
-  // --- 5. PREPARE EDIT (Populate Form) ---
   const handleEditClick = (item) => {
     setEditingId(item.id);
-    
-    // Scroll to top to see form
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Map database columns to form fields
     if (activeTab === 'projects') {
         setFormData({ 
             w_name: item.w_name, 
             w_desc: item.w_desc, 
-            existing_image: item.w_img // Keep track of old image
+            existing_image: item.w_img 
         });
     } else if (activeTab === 'services') {
         setFormData({ 
@@ -105,38 +87,31 @@ const AdminDashboard = () => {
     }
   };
 
-  // --- 6. ADD or UPDATE ITEM ---
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     
-    let imageUrl = formData.existing_image || ''; // Default to old image if editing
+    let imageUrl = formData.existing_image || '';
     
-    // Upload NEW image if file selected
     if (file && activeTab === 'projects') {
       imageUrl = await uploadImage(file);
       if (!imageUrl) { setLoading(false); return; }
     }
 
     const itemPayload = { ...formData };
-    
-    // Clean up temporary field
     delete itemPayload.existing_image;
 
-    // Assign Image URL to correct column
     if (activeTab === 'projects') itemPayload.w_img = imageUrl;
 
     let error;
 
     if (editingId) {
-        // --- UPDATE MODE ---
         const { error: updateError } = await supabase
             .from(activeTab)
             .update(itemPayload)
             .eq('id', editingId);
         error = updateError;
     } else {
-        // --- ADD MODE ---
         const { error: insertError } = await supabase
             .from(activeTab)
             .insert([itemPayload]);
@@ -152,7 +127,6 @@ const AdminDashboard = () => {
     setLoading(false);
   };
 
-  // --- 7. UPDATE BIO ---
   const updateBio = async (e) => {
     e.preventDefault();
     const { error } = await supabase.from('profile').update(bioData).eq('id', 1);
@@ -160,11 +134,9 @@ const AdminDashboard = () => {
     else alert('Bio updated successfully!');
   };
 
-  // --- 8. DELETE ITEM ---
   const handleDelete = async (id) => {
     if(!window.confirm("Delete this item permanently?")) return;
     await supabase.from(activeTab).delete().eq('id', id);
-    // If we deleted the item currently being edited, reset the form
     if (editingId === id) resetForm();
     fetchItems();
   };
@@ -178,8 +150,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="admin-layout">
-      
-      {/* SIDEBAR */}
+
       <aside className="sidebar">
         <div className="sidebar-header">
           <h2>Geraldine's Panel</h2>
@@ -203,15 +174,12 @@ const AdminDashboard = () => {
         </button>
       </aside>
 
-      {/* MAIN CONTENT */}
       <main className="main-content">
         <div className="page-header">
           <h1>{activeTab.toUpperCase()} MANAGER</h1>
         </div>
 
-        {/* --- FORM SECTION --- */}
         {activeTab === 'bio' ? (
-           /* BIO FORM */
            <div className="form-card">
              <h3><FaPen /> Edit Profile Info</h3>
              <form onSubmit={updateBio}>
@@ -235,7 +203,6 @@ const AdminDashboard = () => {
              </form>
            </div>
         ) : (
-          /* DYNAMIC FORM (ADD/EDIT) */
           <div className="form-card" style={{border: editingId ? '1px solid #f59e0b' : '1px solid rgba(255,255,255,0.1)'}}>
             <h3>
                 {editingId ? <><FaEdit /> Edit Item</> : <><FaPlus /> Add New {activeTab.slice(0, -1)}</>}
@@ -243,7 +210,6 @@ const AdminDashboard = () => {
             
             <form onSubmit={handleSubmit}>
               
-              {/* PROJECTS FIELDS */}
               {activeTab === 'projects' && (
                 <>
                   <div className="form-group">
@@ -257,12 +223,10 @@ const AdminDashboard = () => {
                   <div className="form-group">
                     <label>Project Image {editingId && <small>(Leave empty to keep existing)</small>}</label>
                     <input id="fileInput" type="file" accept="image/*" onChange={e => setFile(e.target.files[0])} required={!editingId} /> 
-                    {/* required only if adding new */}
                   </div>
                 </>
               )}
 
-              {/* SERVICES FIELDS */}
               {activeTab === 'services' && (
                 <>
                   <div className="form-group">
@@ -276,7 +240,6 @@ const AdminDashboard = () => {
                 </>
               )}
 
-              {/* SKILLS FIELDS */}
               {activeTab === 'skills' && (
                 <>
                   <div className="form-group">
@@ -290,7 +253,6 @@ const AdminDashboard = () => {
                 </>
               )}
 
-              {/* ACTION BUTTONS */}
               <button 
                 type="submit" 
                 className={editingId ? "btn-update" : "btn-submit"} 
@@ -312,8 +274,6 @@ const AdminDashboard = () => {
           <div className="grid-container">
             {items.map(item => (
               <div key={item.id} className="grid-card" style={{borderColor: editingId === item.id ? '#f59e0b' : ''}}>
-                
-                {/* Image Display */}
                 {activeTab === 'projects' && item.w_img && (
                   <div className="card-image">
                     <img src={item.w_img} alt="Preview" />

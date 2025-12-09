@@ -29,8 +29,6 @@
   from { transform: translateY(0); }
   to { transform: translateY(-180px); }
 }
-
-/* Soft neon glow orb — matching HERO neon color */
 .about::after {
   content: "";
   position: absolute;

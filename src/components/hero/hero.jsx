@@ -12,12 +12,11 @@ const Hero = () => {
   return (
     <div id="home" className="hero">
 
-      {/* 1. Global Particles */}
       <div className="hero-particles-bg">
         <Particles
           particleColors={["#ffffff", "#a29bfe"]}
           particleCount={200}
-aparticleSpread={10}
+          aparticleSpread={10}
           speed={0.1}
           particleBaseSize={100}
           moveParticlesOnHover={true}
@@ -27,8 +26,7 @@ aparticleSpread={10}
       </div>
 
       <div className="hero-container">
-
-        {/* Left: Image */}
+        
         <div className="hero-left">
           <div className="img-glow-wrapper">
             <div className="img-container">
@@ -41,13 +39,9 @@ aparticleSpread={10}
           </div>
         </div>
 
-        {/* Right: Text */}
         <div className="hero-right">
-
-          {/* Move welcome text on top */}
           <h3 className="hero-welcome">HELLO, IT'S ME</h3>
 
-          {/* Split name into two colors */}
           <h1>
             <span className="name-white">Geraldine</span>{" "}
             <span className="name-blue">Lois Agulto</span>
@@ -75,7 +69,6 @@ aparticleSpread={10}
         </div>
       </div>
 
-      {/* Scroll Down Indicator */}
       <div className="">
         <div className="">
           <div className=""></div>

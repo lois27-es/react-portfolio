@@ -1,11 +1,9 @@
-/* ------------------------------
-   SECTION WRAPPER
---------------------------------*/
 .myproject {
   padding: 100px 20px;
   background: radial-gradient(circle at center, #0B0620 0%, #050315 100%);
   text-align: center;
 }
+
 .section-title-wrapper {
   text-align: center;
   margin-top: 100px;
@@ -17,7 +15,6 @@
   color: #ffffff;
   letter-spacing: 2px;
   text-transform: uppercase;
-
   background: linear-gradient(90deg, #ffffff, #99bdff, #2f6bff, #ffffff);
   background-size: 250%;
   -webkit-background-clip: text;
@@ -34,15 +31,11 @@
   opacity: 0.9;
 }
 
-/* Title animation */
 @keyframes flowTitle {
   0% { background-position: 0%; }
   100% { background-position: 250%; }
 }
 
-/* ------------------------------
-   TWO-COLUMN WRAPPER
---------------------------------*/
 .swap-wrapper {
   display: flex;
   justify-content: center;
@@ -52,9 +45,6 @@
   padding: 40px 5%;
 }
 
-/* ------------------------------
-   LEFT TEXT SIDE
---------------------------------*/
 .project-description {
   flex: 1;
   color: #ffffff;
@@ -66,7 +56,6 @@
   font-size: 42px;
   font-weight: 700;
   margin-bottom: 20px;
-
   background: linear-gradient(90deg, #ffffff, #8fc9ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -77,19 +66,18 @@
   opacity: 0.85;
   line-height: 1.7;
 }
+
 .project-cards {
   flex: 1;
-  max-width: 340px;   /* smaller width */
+  max-width: 340px;
 }
 
 .swap-card {
   width: 100%;
-  height: 420px;  /* smaller height */
+  height: 420px;
   border-radius: 18px;
   overflow: hidden;
 }
-
-
 
 .swap-card:hover {
   transform: translateY(-5px);
@@ -115,9 +103,6 @@
   line-height: 1.6;
 }
 
-/* ------------------------------
-   RESPONSIVE DESIGN
---------------------------------*/
 @media (max-width: 1024px) {
   .swap-wrapper {
     gap: 40px;
